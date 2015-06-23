@@ -1,12 +1,70 @@
+@blue: #3a4b9d;
+
+html,
+body{
+  height: 100%;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  //font-family: Roboto, sans-serif;
+  font-family: 'Myriad Pro';
+  background-color: white;
 }
 
 a {
   color: #00B7FF;
 }
 
-.whatever{
-  color: red;
+p{
+  text-align: justify;
+}
+
+h1 {
+  text-transform: uppercase;
+  color: @blue;
+  //font-family: 'Lane', sans-serif;
+  font-family: 'Franklin Gothic Medium';
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0.2em;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+section{
+  padding: 40px 0;
+}
+
+.home-section{
+  background: url('/public/images/home/home.jpg') no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  position: relative;
+}
+
+.whatson-section {
+  h1{
+    text-align: left;
+    margin-bottom: 100px;
+    margin-top: 0;
+  }
+
+  img{
+    float: right;
+  }
+
+  p {
+    max-width: 200px;
+  }
+
+}
+
+.where-section{
+
+  #wcszhmap{
+    width: 100%;
+    height: 300px;
+  }
+
 }
