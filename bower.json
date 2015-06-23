@@ -1,0 +1,30 @@
+{
+  "name": "WCSZH",
+  "version": "1.0.0",
+  "authors": [
+    "gyula.krizsma <gyula.krizsma@hotmail.com>"
+  ],
+  "description": "WCSZH bower file",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "jquery": "~2.1.4"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "js": "dist/js/*.*",
+      "css": "dist/css/*.*",
+      "fonts": "dist/fonts/*.*"
+    },
+    "jquery": {
+      "js": "dist/jquery.{js,min.js,min.map}"
+    }
+  }
+}
