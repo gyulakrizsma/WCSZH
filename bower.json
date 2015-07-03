@@ -15,7 +15,9 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.4",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "scrollmagic": "~2.0.5",
+    "wow": "~1.1.2"
   },
   "exportsOverride": {
     "bootstrap": {
@@ -25,6 +27,13 @@
     },
     "jquery": {
       "js": "dist/jquery.{js,min.js,min.map}"
+    },
+    "wow": {
+      "css": "css/libs/*.*",
+      "js": "dist/*.*"
+    },
+    "scrollmagic": {
+      "js": "scrollmagic/minified/*.*"
     }
   }
 }
