@@ -33,7 +33,7 @@
                 var $menu = $('.navbar-default'),
                     $logo = $('.navbar-brand img');
 
-                if(top > 40){
+                if(top > window.innerHeight){
                     $menu.removeClass('nav-animate-out');
                     $menu.addClass('nav-animate-in');
                 }
