@@ -25,8 +25,8 @@
         addListeners: function(){
             var $innerCircle = $('.inner-circle');
 
-            $innerCircle.mouseover(WCSZH.showOrHideInfo);
-            $innerCircle.mouseout(WCSZH.showOrHideInfo);
+            $innerCircle.mouseover(WCSZH.showInfo);
+            $innerCircle.mouseout(WCSZH.hideInfo);
 
             $(window).scroll(function () {
                 var top = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
@@ -54,14 +54,33 @@
         },
 
         /**
-         * Helper method for the toggle feature
+         * Helper method for the toggle feature to show infobox
          * in the firsttime section
          *
          * @return {void}
          */
-        showOrHideInfo: function(){
+        showInfo: function(){
+            var $mainCircleContainer = '.main-circle-container';
+            $(this).parents($mainCircleContainer).addClass('active');
+            $($mainCircleContainer).not('.active').addClass("not-active")
+            
             var info = $(this).data('info');
-            $('.' + info).toggle('slow');
+            $('.' + info).slideToggle(500);
+        },
+        
+        /**
+         * Helper method for the toggle feature to hide infobox
+         * in the firsttime section
+         *
+         * @return {void}
+         */
+        hideInfo: function(){
+            var $mainCircleContainer = $('.main-circle-container');
+            $mainCircleContainer.removeClass('not-active')
+            $mainCircleContainer.removeClass('active')
+            
+            var info = $(this).data('info');
+            $('.' + info).slideToggle(500);
         },
 
         /**
@@ -102,9 +121,25 @@
                 animation: window.google.maps.Animation.DROP,
                 //icon: '/images/home/carmarker.png'
             });
-            window.google.maps.event.addDomListener(window, 'load', initialize);
+            
+            WCSZH.attachSecretMessage(marker, 'Atelier Tanz <br /><a target="_blank" href="https://www.google.ch/maps/dir//Atelier:Tanz+Tanzschule+Z%C3%BCrich,+Ausstellungsstrasse+25,+8005+Z%C3%BCrich/@47.3818112,8.4626751,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x47900a0e9d43e57b:0xa883f7e0926304a6!2m2!1d8.5366626!2d47.3817188?hl=hu">Ausstellungsstrasse 25</a>');
+        },
+        
+        /**
+         * Attaches an info window to a marker with the provided message. When the
+         * marker is clicked, the info window will open with the secret message.
+         *
+         * @return {void}
+         */
+        attachSecretMessage: function(marker, secretMessage) {
+          var infowindow = new window.google.maps.InfoWindow({
+            content: secretMessage
+          });
+        
+          marker.addListener('click', function() {
+            infowindow.open(marker.get('map'), marker);
+          });
         }
-
     }
 
     WCSZH.init();
