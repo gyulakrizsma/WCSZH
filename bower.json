@@ -17,23 +17,28 @@
     "bootstrap": "~3.3.4",
     "jquery": "~2.1.4",
     "scrollmagic": "~2.0.5",
-    "wow": "~1.1.2"
+    "wow": "~1.1.2",
+    "owl-carousel": "~1.3.2"
   },
-  "exportsOverride": {
+  "overrides": {
     "bootstrap": {
-      "js": "dist/js/*.*",
-      "css": "dist/css/*.*",
-      "fonts": "dist/fonts/*.*"
-    },
-    "jquery": {
-      "js": "dist/jquery.{js,min.js,min.map}"
+      "main": [
+        "dist/js/*.*",
+        "dist/css/*.*",
+        "dist/fonts/*.*"
+        ]
     },
     "wow": {
-      "css": "css/libs/*.*",
-      "js": "dist/*.*"
+      "main":[
+        "css/libs/*.*",
+        "dist/*.*"
+      ]
     },
-    "scrollmagic": {
-      "js": "scrollmagic/minified/*.*"
+    "owl-carousel":{
+      "main": [
+        "owl-carousel/owl-carousel.css",
+        "owl-carousel/owl-carousel.js"        
+      ]
     }
   }
 }

@@ -1,4 +1,4 @@
-(function(){
+(function($){
     'use strict';
 
     var WCSZH = {
@@ -12,6 +12,7 @@
 
             WCSZH.addListeners();
             WCSZH.initWowPlugin();
+            WCSZH.initOwlPlugin();
             if(window.google !== undefined){
                 WCSZH.initGoogleMap();
             }
@@ -97,6 +98,27 @@
             );
             wow.init();
         },
+        
+        initOwlPlugin: function(){
+            $("#owl-home").owlCarousel({
+ 
+                navigation : false, // Show next and prev buttons
+                slideSpeed : 300,
+                paginationSpeed : 400,
+                singleItem:true,
+                autoPlay: 3000,
+                transitionStyle:"fade",
+                autoHeight : true
+            
+                // "singleItem:true" is a shortcut for:
+                // items : 1, 
+                // itemsDesktop : false,
+                // itemsDesktopSmall : false,
+                // itemsTablet: false,
+                // itemsMobile : false
+            
+            });  
+        },
 
         /**
          * Initializes GoogleMap
@@ -144,4 +166,4 @@
 
     WCSZH.init();
 
-})();
+})(jQuery);
