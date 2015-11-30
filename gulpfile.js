@@ -11,22 +11,18 @@ var gulp = require('gulp'),
 
 var paths = {
   webroot: './',
-  concatJsDest: './public/production/home.min.js',
-  concatCssDest: './public/production/style.min.css',
+  concatJsDest: './public/production/js/home.min.js',
+  concatCssDest: './public/production/css/style.min.css',
   
   jqueryJs: './public/lib/jquery/dist/jquery.js',
   bootstrapJs: './public/lib/bootstrap/dist/js/bootstrap.js',
   wowJs: './public/lib/wow/dist/wow.js',
   scrollMagicJs: './public/lib/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
-  owlJs: './public/lib/owl-carousel/owl.carousel.js',
   homeJs: './public/javascripts/home/home.js',
   
   
   bootstrapCss: './public/lib/bootstrap/dist/css/bootstrap.min.css',
   wowCss: './public/lib/wow/css/libs/animate.css',
-  owlCss: './public/lib/owl-carousel/owl.carousel.css',
-  owlThemeCss: './public/lib/owl-carousel/owl.theme.css',
-  owlTransitionCss: './public/lib/owl-carousel/owl.transitions.css',
   styleCss: './public/stylesheets/style.css'
   
 };
@@ -34,6 +30,11 @@ var paths = {
 gulp.task('bower', function(){
     return gulp.src(mainBowerFiles(), {base: './bower_components'})
         .pipe(gulp.dest(paths.webroot + 'public/lib/')); 
+});
+
+gulp.task('copyFonts', function(){
+   return gulp.src(paths.webroot + 'public/lib/bootstrap/dist/fonts/**')
+          .pipe(gulp.dest(paths.webroot + 'public/production/fonts')) 
 });
 
 gulp.task('less', function (){
@@ -58,7 +59,6 @@ gulp.task('min:js', function() {
             paths.bootstrapJs,
             paths.wowJs,
             paths.scrollMagicJs,
-            paths.owlJs,
             paths.homeJs,
         ])
     .pipe(concat(paths.concatJsDest))
@@ -70,9 +70,6 @@ gulp.task('min:css', function() {
     gulp.src(
         [   paths.bootstrapCss,
             paths.wowCss,
-            paths.owlCss,
-            paths.owlThemeCss,
-            paths.owlTransitionCss,
             paths.styleCss,
         ])
     .pipe(concat(paths.concatCssDest))

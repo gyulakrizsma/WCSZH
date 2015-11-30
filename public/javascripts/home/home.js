@@ -1,4 +1,4 @@
-(function($){
+(function ($) {
     'use strict';
 
     var WCSZH = {
@@ -8,12 +8,12 @@
          *
          * @return {void}
          */
-        init: function(){
+        init: function () {
 
             WCSZH.addListeners();
             WCSZH.initWowPlugin();
-            WCSZH.initOwlPlugin();
-            if(window.google !== undefined){
+            WCSZH.initCarousel();
+            if (window.google !== undefined) {
                 WCSZH.initGoogleMap();
             }
         },
@@ -23,7 +23,7 @@
          *
          * @return {void}
          */
-        addListeners: function(){
+        addListeners: function () {
             var $innerCircle = $('.inner-circle');
 
             $innerCircle.mouseover(WCSZH.showInfo);
@@ -34,19 +34,19 @@
                 var $menu = $('.navbar-default'),
                     $logo = $('.navbar-brand img');
 
-                if(top > window.innerHeight){
+                if (top > window.innerHeight) {
                     $menu.removeClass('nav-animate-out');
                     $menu.addClass('nav-animate-in');
                 }
-                else{
+                else {
                     $menu.removeClass('nav-animate-in');
                     $menu.addClass('nav-animate-out');
                 }
 
-                if(top > window.innerHeight){
+                if (top > window.innerHeight) {
                     $logo.addClass('active');
                 }
-                else{
+                else {
                     $logo.removeClass('active')
                 }
 
@@ -60,11 +60,11 @@
          *
          * @return {void}
          */
-        showInfo: function(){
+        showInfo: function () {
             var $mainCircleContainer = '.main-circle-container';
             $(this).parents($mainCircleContainer).addClass('active');
             $($mainCircleContainer).not('.active').addClass("not-active")
-            
+
             var info = $(this).data('info');
             $('.' + info).slideToggle(500);
         },
@@ -75,11 +75,11 @@
          *
          * @return {void}
          */
-        hideInfo: function(){
+        hideInfo: function () {
             var $mainCircleContainer = $('.main-circle-container');
             $mainCircleContainer.removeClass('not-active')
             $mainCircleContainer.removeClass('active')
-            
+
             var info = $(this).data('info');
             $('.' + info).slideToggle(500);
         },
@@ -89,35 +89,45 @@
          *
          * @return {void}
          */
-        initWowPlugin: function(){
+        initWowPlugin: function () {
             var wow = new WOW(
                 {
                     mobile: false,
                     animateClass: 'animated'
                 }
-            );
+                );
             wow.init();
         },
-        
-        initOwlPlugin: function(){
-            $("#owl-home").owlCarousel({
- 
-                navigation : false, // Show next and prev buttons
-                slideSpeed : 300,
-                paginationSpeed : 400,
-                singleItem:true,
-                autoPlay: 3000,
-                transitionStyle:"fade",
-                autoHeight : true
+
+        initCarousel: function () {
             
-                // "singleItem:true" is a shortcut for:
-                // items : 1, 
-                // itemsDesktop : false,
-                // itemsDesktopSmall : false,
-                // itemsTablet: false,
-                // itemsMobile : false
+            $('.carousel').carousel({
+                interval: 6000,
+                pause: "false"
+            });
             
-            });  
+            //Custom Jquery
+            var $item = $('.carousel .item');
+            var $wHeight = $(window).height();
+
+            $item.height($wHeight);
+            $item.addClass('full-screen');
+
+            $('.carousel img').each(function () {
+                var $src = $(this).attr('src');
+                var $color = $(this).attr('data-color');
+                $(this).parent().css({
+                    'background-image': 'url(' + $src + ')',
+                    'background-color': $color
+                });
+                $(this).remove();
+            });
+
+            $(window).on('resize', function () {
+                $wHeight = $(window).height();
+                $item.height($wHeight);
+            });
+            //Custom Jquery
         },
 
         /**
@@ -125,13 +135,13 @@
          *
          * @return {void}
          */
-        initGoogleMap: function(){
+        initGoogleMap: function () {
             var myLatlng = new window.google.maps.LatLng(47.381929, 8.536647);
             var mapProp = {
                 center: myLatlng,
-                zoom:15,
+                zoom: 15,
                 scrollwheel: false,
-                mapTypeId:window.google.maps.MapTypeId.ROADMAP
+                mapTypeId: window.google.maps.MapTypeId.ROADMAP
             };
 
             var map = new window.google.maps.Map(document.getElementById('wcszhmap'), mapProp);
@@ -141,9 +151,8 @@
                 map: map,
                 title: 'Atelier Tanz',
                 animation: window.google.maps.Animation.DROP,
-                //icon: '/images/home/carmarker.png'
             });
-            
+
             WCSZH.attachSecretMessage(marker, 'Atelier Tanz <br /><a target="_blank" href="https://www.google.ch/maps/dir//Atelier:Tanz+Tanzschule+Z%C3%BCrich,+Ausstellungsstrasse+25,+8005+Z%C3%BCrich/@47.3818112,8.4626751,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x47900a0e9d43e57b:0xa883f7e0926304a6!2m2!1d8.5366626!2d47.3817188?hl=hu">Ausstellungsstrasse 25</a>');
         },
         
@@ -153,14 +162,14 @@
          *
          * @return {void}
          */
-        attachSecretMessage: function(marker, secretMessage) {
-          var infowindow = new window.google.maps.InfoWindow({
-            content: secretMessage
-          });
-        
-          marker.addListener('click', function() {
-            infowindow.open(marker.get('map'), marker);
-          });
+        attachSecretMessage: function (marker, secretMessage) {
+            var infowindow = new window.google.maps.InfoWindow({
+                content: secretMessage
+            });
+
+            marker.addListener('click', function () {
+                infowindow.open(marker.get('map'), marker);
+            });
         }
     }
 

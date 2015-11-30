@@ -106,15 +106,19 @@ header .nav-animate-out {
 .home-section .height100 {
   height: 100%;
 }
-.home-section #home {
-  position: absolute;
-  right: 0;
-  top: 0;
-  min-width: 100%;
+.home-section .full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.home-section .owl-carousel {
+  position: initial;
+}
+.home-section .owl-carousel .owl-wrapper {
+  position: initial;
+}
+.home-section img {
   min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -1000;
   overflow: hidden;
 }
 .home-section .container .row .logo {

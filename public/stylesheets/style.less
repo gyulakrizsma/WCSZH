@@ -145,16 +145,24 @@ header {
   .height100{
     height: 100%;
   }
-
-  #home {
-    position: absolute; 
-    right: 0; 
-    top: 0;
-    min-width: 100%; 
+  
+  .full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+  
+  .owl-carousel{
+    position: initial;
+    
+    .owl-wrapper{
+      position: initial;    
+      } 
+  }
+  
+  img {
+    // position: absolute;
     min-height: 100%;
-    width: auto; 
-    height: auto; 
-    z-index: -1000;
     overflow: hidden;
   }
 
