@@ -1,3 +1,13 @@
+.fullScreen {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.pictures {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 html,
 body {
   height: 100%;
@@ -33,13 +43,6 @@ h1 {
 }
 section {
   padding: 60px 0;
-}
-.dark-overlay {
-  height: 100%;
-  width: 100%;
-  background: #000000;
-  background: rgba(0, 0, 0, 0.85);
-  position: absolute;
 }
 .padding-second-row {
   padding-top: 50px;
@@ -103,23 +106,82 @@ header .nav-animate-out {
   padding-top: 0;
   overflow: hidden;
 }
-.home-section .height100 {
+.home-section .carousel {
   height: 100%;
+  width: 100%;
+  position: absolute;
 }
-.home-section .full-screen {
-  background-size: cover;
-  background-position: center;
+.home-section .carousel.carousel-fade .carousel-indicators .active {
+  background-color: #3a4b9d;
+}
+.home-section .carousel.carousel-fade .carousel-inner {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.home-section .carousel.carousel-fade .carousel-inner .item {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  -webkit-filter: sepia(1);
+  -webkit-filter: sepia(100%);
+  -moz-filter: sepia(100%);
+  -ms-filter: sepia(100%);
+  -o-filter: sepia(100%);
+  filter: sepia(100%);
+  transition-property: all;
+}
+.home-section .carousel.carousel-fade .carousel-inner .item:hover {
+  -webkit-filter: sepia(0);
+  -webkit-filter: sepia(1%);
+  -moz-filter: sepia(1%);
+  -ms-filter: sepia(1%);
+  -o-filter: sepia(1%);
+  filter: sepia(1%);
+}
+.home-section .carousel.carousel-fade .carousel-inner .item.first {
+  background: url('/public/images/home/1.jpg');
+  background-position: center center;
   background-repeat: no-repeat;
+  background-size: cover;
 }
-.home-section .owl-carousel {
-  position: initial;
+.home-section .carousel.carousel-fade .carousel-inner .item.second {
+  background: url('/public/images/home/2.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.home-section .owl-carousel .owl-wrapper {
-  position: initial;
+.home-section .carousel.carousel-fade .carousel-inner .item.third {
+  background: url('/public/images/home/3.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.home-section img {
-  min-height: 100%;
-  overflow: hidden;
+.home-section .carousel.carousel-fade .carousel-inner .item.fourth {
+  background: url('/public/images/home/4.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.home-section .carousel.carousel-fade .carousel-inner .item,
+.home-section .carousel.carousel-fade .carousel-inner .active.left,
+.home-section .carousel.carousel-fade .carousel-inner .active.right {
+  opacity: 0;
+}
+.home-section .carousel.carousel-fade .carousel-inner .active,
+.home-section .carousel.carousel-fade .carousel-inner .next.left,
+.home-section .carousel.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.home-section .carousel.carousel-fade .carousel-inner .next,
+.home-section .carousel.carousel-fade .carousel-inner .prev,
+.home-section .carousel.carousel-fade .carousel-inner .active.left,
+.home-section .carousel.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  transform: translate3d(0, 0, 0);
+}
+.home-section .carousel.carousel-fade .carousel-control {
+  z-index: 2;
 }
 .home-section .container .row .logo {
   text-align: center;
@@ -261,6 +323,10 @@ header .nav-animate-out {
 .where-section {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
+  -webkit-transition: filter 2s, -webkit-filter 2s;
+  -moz-transition: filter 2s, -webkit-filter 2s;
+  -ms-transition: filter 2s, -webkit-filter 2s;
+  -o-transition: filter 2s, -webkit-filter 2s;
   transition: filter 2s, -webkit-filter 2s;
 }
 .where-section #wcszhmap {

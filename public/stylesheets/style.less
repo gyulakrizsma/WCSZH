@@ -1,6 +1,18 @@
 @blue: #3a4b9d;
 @gray: #999999;
 
+.fullScreen{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.pictures{
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 html,
 body {
   height: 100%;
@@ -46,14 +58,6 @@ h1 {
 
 section {
   padding: 60px 0;
-}
-
-.dark-overlay {
-  height: 100%;
-  width: 100%;
-  background: #000000;
-  background: rgba(0, 0, 0, 0.85);
-  position: absolute;
 }
 
 .padding-second-row {
@@ -141,29 +145,89 @@ header {
   position: relative;
   padding-top: 0;
   overflow: hidden;
-
-  .height100{
-    height: 100%;
-  }
   
-  .full-screen {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-  
-  .owl-carousel{
-    position: initial;
+  .carousel{
+    .fullScreen;
     
-    .owl-wrapper{
-      position: initial;    
-      } 
-  }
+    &.carousel-fade {
+      
+      .carousel-indicators{
+        
+        .active{
+          background-color: @blue;
+        }
+      }
+      
+      .carousel-inner {
+        .fullScreen;
+        
+          .item {
+              .fullScreen;
+        
+              -webkit-filter: sepia(1);
+              -webkit-filter: sepia(100%);
+              -moz-filter: sepia(100%);
+              -ms-filter: sepia(100%);
+              -o-filter: sepia(100%);
+              filter: sepia(100%);
+
+              transition-property: all;
+              
+              &:hover{
+                -webkit-filter: sepia(0);
+                -webkit-filter: sepia(1%);
+                -moz-filter: sepia(1%);
+                -ms-filter: sepia(1%);
+                -o-filter: sepia(1%);
+                filter: sepia(1%);   
+              }
+              
+              &.first{
+                background: url('/public/images/home/1.jpg');
+                .pictures;
+              }
+              
+              &.second{
+                background: url('/public/images/home/2.jpg');
+                .pictures;
+              }
+              
+              &.third{
+                background: url('/public/images/home/3.jpg');
+                .pictures;
+              }
+              
+              &.fourth{
+                background: url('/public/images/home/4.jpg');
+                .pictures;
+              }
+          }
+          
+          .item,
+          .active.left,
+          .active.right {
+              opacity: 0;
+          }
   
-  img {
-    // position: absolute;
-    min-height: 100%;
-    overflow: hidden;
+          .active,
+          .next.left,
+          .prev.right {
+              opacity: 1;
+          }
+  
+          .next,
+          .prev,
+          .active.left,
+          .active.right { 
+              left: 0;
+              transform: translate3d(0, 0, 0);
+          }
+      }
+  
+        .carousel-control {
+            z-index: 2;
+        }
+    }
   }
 
   .container {
@@ -287,10 +351,10 @@ header {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 
-  //-webkit-transition: filter 0.4s, -webkit-filter 0.4s;
-  //-moz-transition: filter 0.4s, -webkit-filter 0.4s;
-  //-ms-transition: filter 0.4s, -webkit-filter 0.4s;
-  //-o-transition: filter 0.4s, -webkit-filter 0.4s;
+  -webkit-transition: filter 2s, -webkit-filter 2s;
+  -moz-transition: filter 2s, -webkit-filter 2s;
+  -ms-transition: filter 2s, -webkit-filter 2s;
+  -o-transition: filter 2s, -webkit-filter 2s;
   transition: filter 2s, -webkit-filter 2s;
 
   #wcszhmap {
