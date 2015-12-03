@@ -24,7 +24,10 @@
          * @return {void}
          */
         addListeners: function () {
-            var $innerCircle = $('.inner-circle');
+            var $innerCircle = $('.inner-circle'),
+                $titleCont = $('.title-cont'),
+                $videoCont = $('.video-cont'),
+                $ipadSize = 980;
 
             $innerCircle.mouseover(WCSZH.showInfo);
             $innerCircle.mouseout(WCSZH.hideInfo);
@@ -32,35 +35,49 @@
             /*
             Handling the logo effect
             */
-            $(window).load(function(){
-               
-               setTimeout(function() {
-                   $('.title-cont').addClass('loaded');
-               }, 2000); 
-               
+            setTimeout(function () {
+                $titleCont.addClass('loaded');
+            }, 2000);
+
+            /*
+            Handling the video inject based on screensize
+            */
+            if (document.body.clientWidth >= $ipadSize) {
+                WCSZH.addVideo($videoCont);
+            }
+        
+            // If you want to autoplay when the window resized wider than 780px 
+            // after load, you can add this:
+        
+            $(window).resize(function () {
+                if (document.body.clientWidth >= $ipadSize) {
+                    WCSZH.addVideo($videoCont);
+                }
+                else{
+                    WCSZH.removeVideo($videoCont);
+                }
             });
+
 
             $(window).scroll(function () {
                 var top = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
                 var $menu = $('.navbar-default'),
+                    //$logoHeight = $('.title-cont').height(),
                     $logo = $('.navbar-brand img');
 
-                if (top > window.innerHeight / 3) {
+                //if (top > window.innerHeight / 3) {
+                if (top > 100) {
                     $menu.removeClass('nav-animate-out');
                     $menu.addClass('nav-animate-in');
+                    $titleCont.removeClass('loaded');
+                    $logo.addClass('active');
                 }
                 else {
                     $menu.removeClass('nav-animate-in');
                     $menu.addClass('nav-animate-out');
-                }
-
-                if (top > window.innerHeight) {
-                    $logo.addClass('active');
-                }
-                else {
+                    $titleCont.addClass('loaded');
                     $logo.removeClass('active')
                 }
-
             });
 
         },
@@ -94,6 +111,29 @@
             var info = $(this).data('info');
             $('.' + info).slideToggle(500);
         },
+        
+        /**
+         * Helper method for adding the video tag to the page
+         * @return {void}
+         */
+        addVideo: function ($videoCont) {
+            
+            $videoCont.prepend(
+                    '<video autoplay="" loop="" muted="">' +
+                    '<source src="/public/images/home/03.mp4" type="video/mp4">' +
+                    '</video>');
+                    
+            $videoCont.removeClass('video-bg')
+        },
+        
+        /**
+         * Helper method for removing the video tag to the page
+         * @return {void}
+         */
+        removeVideo: function ($videoCont) {
+            $videoCont.addClass('video-bg')
+            $videoCont.remove('video');
+        },
 
         /**
          * Initializes WOW.js
@@ -111,7 +151,7 @@
         },
 
         initCarousel: function () {
-            
+
             $('.carousel').carousel({
                 interval: 6000,
                 pause: "false"
