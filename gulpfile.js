@@ -6,8 +6,7 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   less = require('gulp-less'),
   mainBowerFiles = require('main-bower-files'),
-  watch = require('gulp-watch'),
-  project = require('./project.json');
+  watch = require('gulp-watch');
 
 var paths = {
   webroot: './',
