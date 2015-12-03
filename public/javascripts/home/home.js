@@ -19,7 +19,7 @@
         },
 
         /**
-         * Handleing listeners
+         * Handling listeners
          *
          * @return {void}
          */
@@ -28,13 +28,24 @@
 
             $innerCircle.mouseover(WCSZH.showInfo);
             $innerCircle.mouseout(WCSZH.hideInfo);
+            
+            /*
+            Handling the logo effect
+            */
+            $(window).load(function(){
+               
+               setTimeout(function() {
+                   $('.title-cont').addClass('loaded');
+               }, 2000); 
+               
+            });
 
             $(window).scroll(function () {
                 var top = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
                 var $menu = $('.navbar-default'),
                     $logo = $('.navbar-brand img');
 
-                if (top > window.innerHeight) {
+                if (top > window.innerHeight / 3) {
                     $menu.removeClass('nav-animate-out');
                     $menu.addClass('nav-animate-in');
                 }
