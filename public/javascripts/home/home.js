@@ -2,7 +2,8 @@
     'use strict';
 
     var WCSZH = {
-
+        $ipadSize: 980,
+        
         /**
          * Initialize
          *
@@ -26,8 +27,7 @@
         addListeners: function () {
             var $innerCircle = $('.inner-circle'),
                 $titleCont = $('.title-cont'),
-                $videoCont = $('.video-cont'),
-                $ipadSize = 980;
+                $videoCont = $('.video-cont');
 
             $innerCircle.mouseover(WCSZH.showInfo);
             $innerCircle.mouseout(WCSZH.hideInfo);
@@ -42,7 +42,7 @@
             /*
             Handling the video inject based on screensize
             */
-            if (document.body.clientWidth >= $ipadSize) {
+            if (document.body.clientWidth >= WCSZH.$ipadSize) {
                 WCSZH.addVideo($videoCont);
             }
         
@@ -50,7 +50,7 @@
             // after load, you can add this:
         
             $(window).resize(function () {
-                if (document.body.clientWidth >= $ipadSize) {
+                if (document.body.clientWidth >= WCSZH.$ipadSize) {
                     WCSZH.addVideo($videoCont);
                 }
                 else{
@@ -172,7 +172,9 @@
                 mapTypeId: window.google.maps.MapTypeId.ROADMAP
             };
             
-            mapProp.draggable = false;
+            if (document.body.clientWidth >= WCSZH.$ipadSize) {
+                mapProp.draggable = false;
+            }
             
             var map = new window.google.maps.Map(document.getElementById('wcszhmap'), mapProp);
 
@@ -205,4 +207,4 @@
 
     WCSZH.init();
 
-})(jQuery);
+})(window.jQuery);
