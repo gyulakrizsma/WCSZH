@@ -171,7 +171,9 @@
                 scrollwheel: false,
                 mapTypeId: window.google.maps.MapTypeId.ROADMAP
             };
-
+            
+            mapProp.draggable = false;
+            
             var map = new window.google.maps.Map(document.getElementById('wcszhmap'), mapProp);
 
             var marker = new window.google.maps.Marker({
