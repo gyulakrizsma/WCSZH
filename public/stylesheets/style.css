@@ -193,13 +193,8 @@ header .nav-animate-out {
   background: rgba(0, 0, 0, 0.2);
   opacity: 1;
   text-align: center;
-  padding: 20px 0px 20px 50px;
-  width: 30px;
-  transition: width 0.4s ease, padding-right 0.4s ease;
-}
-.home-section .title-cont.loaded {
+  padding: 20px 30px 20px 30px;
   width: auto;
-  padding-right: 50px;
 }
 .where-section {
   -webkit-filter: grayscale(100%);
@@ -305,7 +300,7 @@ header .nav-animate-out {
   display: none;
   padding-right: 30px;
   box-shadow: 0px 0px 15px 5px #999999;
-  margin-top: -150px;
+  margin-top: -100px;
   z-index: 2000;
   background-color: white;
 }
@@ -368,7 +363,7 @@ footer {
     font-size: 17px;
   }
   .firsttime-section .firsttime-info {
-    margin-top: -70px;
+    margin-top: -20px;
   }
 }
 /*MEDIA QUERIES*/

@@ -31,13 +31,6 @@
 
             $innerCircle.mouseover(WCSZH.showInfo);
             $innerCircle.mouseout(WCSZH.hideInfo);
-            
-            /*
-            Handling the logo effect
-            */
-            setTimeout(function () {
-                $titleCont.addClass('loaded');
-            }, 2000);
 
             /*
             Handling the video inject based on screensize
@@ -172,7 +165,7 @@
                 mapTypeId: window.google.maps.MapTypeId.ROADMAP
             };
             
-            if (document.body.clientWidth >= WCSZH.$ipadSize) {
+            if (document.body.clientWidth <= WCSZH.$ipadSize) {
                 mapProp.draggable = false;
             }
             
