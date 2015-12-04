@@ -237,11 +237,18 @@ header {
     position: absolute;
     right: 0;
     top: 100px;
-    background: rgba(0, 0, 0, 0.2);
+    // background: rgba(0, 0, 0, 0.2);
+    background-color: rgba(153, 153, 153, 0.7);    
     opacity: 1;
     text-align: center;
     padding: 20px 30px 20px 30px;
     width: auto;
+    transition: width 0.4s ease, padding-right 0.4s ease;
+    
+    &.loaded{
+      width: 0px;
+      padding: 0px;
+    }
   }
 
 //   .container {

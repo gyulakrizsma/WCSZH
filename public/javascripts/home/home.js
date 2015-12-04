@@ -62,13 +62,13 @@
                 if (top > 100) {
                     $menu.removeClass('nav-animate-out');
                     $menu.addClass('nav-animate-in');
-                    $titleCont.removeClass('loaded');
+                    $titleCont.addClass('loaded');
                     $logo.addClass('active');
                 }
                 else {
                     $menu.removeClass('nav-animate-in');
                     $menu.addClass('nav-animate-out');
-                    $titleCont.addClass('loaded');
+                    $titleCont.removeClass('loaded');
                     $logo.removeClass('active')
                 }
             });
