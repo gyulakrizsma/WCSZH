@@ -237,7 +237,6 @@ header {
     position: absolute;
     right: 0;
     top: 100px;
-    // background: rgba(0, 0, 0, 0.2);
     background-color: rgba(153, 153, 153, 0.7);    
     opacity: 1;
     text-align: center;
@@ -250,105 +249,59 @@ header {
       padding: 0px;
     }
   }
-
-//   .container {
-//     .row {
-// 
-//       .logo{
-//         text-align: center;
-//         
-//         img{
-//           margin-top: 300px;
-//         }
-//       }
-// 
-//       .home-text {
-//         position: absolute;
-//         margin: auto;
-//         max-width: 1000px;
-//         position: absolute;
-//         left: 0;
-//         right: 0;
-//         text-transform: uppercase;
-//         color: white;
-//         text-align: center;
-//         font-size: 30px;
-//         letter-spacing: 0.1em;
-//         top: 70%;
-// 
-//         .highlight {
-//           margin: auto;
-//           width: 220px;
-//           height: 50px;
-//         }
-//         
-//         span{
-//           display: inline-block;          
-//         }
-//       }
-//     }
-//   }
-// 
-//   .rw-words{
-//     position: relative;
-//     width: 220px;
-//     height: 32px;
-//     
-//     span{
-//       position: absolute;
-//       opacity: 0;
-//       top: 0;
-//       left: 0;
-//       overflow: hidden;
-//       -webkit-animation: rotateWord 12s linear infinite 0s;
-//       -ms-animation: rotateWord 12s linear infinite 0s;
-//       animation: rotateWord 12s linear infinite 0s;
-//     }
-//   }
-//   
-//   .rw-words span:nth-child(2) {
-//     -webkit-animation-delay: 3s;
-//     -ms-animation-delay: 3s;
-//     animation-delay: 3s;
-//   }
-//   .rw-words span:nth-child(3) {
-//     -webkit-animation-delay: 6s;
-//     -ms-animation-delay: 6s;
-//     animation-delay: 6s;
-//   }
-//   .rw-words span:nth-child(4) {
-//     -webkit-animation-delay: 9s;
-//     -ms-animation-delay: 9s;
-//     animation-delay: 9s;
-//   }
-//   @-webkit-keyframes rotateWord {
-//     0% { opacity: 0; }
-//     2% { opacity: 0; }
-//     5% { opacity: 1;}
-//     17% { opacity: 1; }
-//     20% { opacity: 0;}
-//     80% { opacity: 0; }
-//     100% { opacity: 0; }
-//   }
-//   @-ms-keyframes rotateWord {
-//     0% { opacity: 0; }
-//     2% { opacity: 0; }
-//     5% { opacity: 1; }
-//     17% { opacity: 1; }
-//     20% { opacity: 0; }
-//     80% { opacity: 0; }
-//     100% { opacity: 0; }
-//   }
-//   @keyframes rotateWord {
-//     0% { opacity: 0; }
-//     2% { opacity: 0; }
-//     5% { opacity: 1; }
-//     17% { opacity: 1; }
-//     20% { opacity: 0; }
-//     80% { opacity: 0; }
-//     100% { opacity: 0; }
-//   }
-
+  
+  .fa {
+   width: 60px;
+   display: block;
+   text-align: center;
+   color: @blue;
+   font:normal 45px 'FontAwesome';
+   line-height:60px;
+   text-rendering: auto;
+   -webkit-font-smoothing: antialiased;
+  }
+  .fa-angle-double-down:before {content: "\f103";}
+   
+  .bounce {
+   position: absolute;
+   bottom: 30px;
+   left: 50% ;
+   width: 60px;
+   height: 60px ;
+   margin-left:-30px;
+   border: 2px solid @blue;
+   -webkit-border-radius:50%;
+   -moz-border-radius:50%;
+   -ms-border-radius:50%;
+   border-radius:50%;
+   animation: bounce 2s infinite;
+   -webkit-animation: bounce 2s infinite;
+   -moz-animation: bounce 2s infinite;
+   -o-animation: bounce 2s infinite;
+  }
+   
+  @-webkit-keyframes bounce {
+   0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+   40% {-webkit-transform: translateY(-30px);}
+   60% {-webkit-transform: translateY(-15px);}
+  }
+   
+  @-moz-keyframes bounce {
+   0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+   40% {-moz-transform: translateY(-30px);}
+   60% {-moz-transform: translateY(-15px);}
+  }
+   
+  @-o-keyframes bounce {
+   0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+   40% {-o-transform: translateY(-30px);}
+   60% {-o-transform: translateY(-15px);}
+  }
+  @keyframes bounce {
+   0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+   40% {transform: translateY(-30px);}
+   60% {transform: translateY(-15px);}
+  }
 }
 
 .where-section {
