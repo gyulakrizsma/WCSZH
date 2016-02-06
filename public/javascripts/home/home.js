@@ -27,11 +27,13 @@
         addListeners: function () {
             var $innerCircle = $('.inner-circle'),
                 $titleCont = $('.title-cont'),
+                $bouncingArrow = $('.arrow'),
                 $videoCont = $('.video-cont');
 
             $innerCircle.mouseover(WCSZH.showInfo);
             $innerCircle.mouseout(WCSZH.hideInfo);
-
+            $bouncingArrow.click(WCSZH.scrollTo);
+            
             /*
             Handling the video inject based on screensize
             */
@@ -41,17 +43,16 @@
         
             // If you want to autoplay when the window resized wider than 780px 
             // after load, you can add this:
-        
             $(window).resize(function () {
                 if (document.body.clientWidth >= WCSZH.$ipadSize) {
                     WCSZH.addVideo($videoCont);
                 }
-                else{
+                else {
                     WCSZH.removeVideo($videoCont);
                 }
             });
-
-
+            
+            // Handling the menu which comes in when you scroll down
             $(window).scroll(function () {
                 var top = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
                 var $menu = $('.navbar-default'),
@@ -74,7 +75,18 @@
             });
 
         },
-
+        
+        /**
+         * Scrolls to the target
+         */
+        scrollTo: function (event) {
+            var target = $($(this).attr('href'));
+            
+            $('html, body').animate({
+                scrollTop: target.offset().top
+            }, 1000);
+        },
+        
         /**
          * Helper method for the toggle feature to show infobox
          * in the firsttime section
@@ -110,12 +122,12 @@
          * @return {void}
          */
         addVideo: function ($videoCont) {
-            
+
             $videoCont.prepend(
-                    '<video autoplay="" loop="" muted="">' +
-                    '<source src="/public/images/home/03.mp4" type="video/mp4">' +
-                    '</video>');
-                    
+                '<video autoplay="" loop="" muted="">' +
+                '<source src="/public/images/home/03.mp4" type="video/mp4">' +
+                '</video>');
+
             $videoCont.removeClass('video-bg')
         },
         
@@ -164,11 +176,11 @@
                 scrollwheel: false,
                 mapTypeId: window.google.maps.MapTypeId.ROADMAP
             };
-            
+
             if (document.body.clientWidth <= WCSZH.$ipadSize) {
                 mapProp.draggable = false;
             }
-            
+
             var map = new window.google.maps.Map(document.getElementById('wcszhmap'), mapProp);
 
             var marker = new window.google.maps.Marker({
