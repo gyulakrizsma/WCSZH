@@ -15,10 +15,10 @@ var paths = {
 
     jqueryJs: './public/lib/jquery/dist/jquery.js',
     bootstrapJs: './public/lib/bootstrap/dist/js/bootstrap.js',
+    jqueryTouchJs: './public/lib/jquery/dist/jquery.mobile.touch.js',
     wowJs: './public/lib/wow/dist/wow.js',
     scrollMagicJs: './public/lib/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
     homeJs: './public/javascripts/home/home.js',
-
 
     bootstrapCss: './public/lib/bootstrap/dist/css/bootstrap.min.css',
     wowCss: './public/lib/wow/css/libs/animate.css',
@@ -59,8 +59,10 @@ gulp.task('clean', ['clean:js', 'clean:css']);
 
 gulp.task('min:js', function () {
     gulp.src(
-        [paths.jqueryJs,
+        [
+            paths.jqueryJs,
             paths.bootstrapJs,
+            paths.jqueryTouchJs,
             paths.wowJs,
             paths.scrollMagicJs,
             paths.homeJs,
@@ -72,7 +74,8 @@ gulp.task('min:js', function () {
 
 gulp.task('min:css', function () {
     gulp.src(
-        [paths.bootstrapCss,
+        [
+            paths.bootstrapCss,
             paths.wowCss,
             paths.styleCss,
             paths.fontawesomeCss

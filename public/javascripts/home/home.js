@@ -81,7 +81,7 @@
          */
         scrollTo: function (event) {
             var target = $($(this).attr('href'));
-            
+
             $('html, body').animate({
                 scrollTop: target.offset().top
             }, 1000);
@@ -156,10 +156,19 @@
         },
 
         initCarousel: function () {
+            var $carousel = $('.carousel');
 
-            $('.carousel').carousel({
+            $carousel.carousel({
                 interval: 6000,
                 pause: "false"
+            });
+
+            $carousel.swiperight(function () {
+                $(this).carousel('prev');
+            });
+
+            $carousel.swipeleft(function () {
+                $(this).carousel('next');
             });
         },
 
